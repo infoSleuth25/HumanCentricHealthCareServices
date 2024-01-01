@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/logo.png" />
+    <title>medical record system</title>
+    <link rel="stylesheet" href="/css/user.css">
+</head>
+<body style="background-color: #93b2a8;">
+    <header>
+        <a href="index.html">
+            <img class="logo" src="/images/logo2.png" height="90%" width="90%">
+        </a>
+        <a href="javascript:void(0);" id="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+        <ul id="mylinks" class="list-unstyled">
+            <li><a href="/user"><b>HISTORY</b></a></li> 
+            <li><a href="/physican"><b>PHYSICIAN</b></a></li>
+            <li><a href="/chem"><b>CHEMIST</b></a></li>
+            <li><a id="logout-button" href="/logout"><b>LOGOUT</b></a></li> 
+        </ul>
+    </header>
+    
+    <h2 class="medicalHistoy">Medical History</h2>
+    {{!-- {{#if response.length}} --}}
+      <table id="datalist">
+          
+
+      </table>
+      <script>
+        const getData= async ()=>{
+            let response = await fetch ("/api/patientHistory",{method:"GET"});
+            let data = await response.json();
+          
+            let history = data.history;
+            console.log(history)
+            let list = `<tr class="tableRow">
+            <td class="date"><b>Date</b></td>
+            <td class="illness"><b>Illness</b></td>
+            <td class="medicine"><b>Medicine Name</b></td>
+            <td class="dateManu"><b>Manufactured Date</b></td>
+            <td class="dateExp"><b>Expiry Date</b></td>
+          </tr>`;
+            history.forEach((e)=>{
+                if(e.MedicineSecond == ""){
+                  list += `<tr class="tableRow">
+                    <td class="date">${e.DateOfIllness}</td>
+                    <td class="illness">${e.userPresentIllness}</td>
+                    <td class="medicine"> ${e.MedicineFirst}</td>
+                    <td class="dateManu"> ${e.MedicineFirstManufact}</td>
+                    <td class="dateExp"> ${e.MedicineFirstExpiry}</td>
+                    </tr>
+                    `
+                }
+                else if(e.MedicineThird == ""){
+                  list += `<tr class="tableRow">
+                    <td class="date">${e.DateOfIllness}</td>
+                    <td class="illness">${e.userPresentIllness}</td>
+                    <td class="medicine"> ${e.MedicineFirst}</td>
+                    <td class="dateManu"> ${e.MedicineFirstManufact}</td>
+                    <td class="dateExp"> ${e.MedicineFirstExpiry}</td>
+                    </tr>
+                    <tr class="tableRow">
+                    <td class="date">${e.DateOfIllness}</td>
+                    <td class="illness">${e.userPresentIllness}</td>
+                    <td class="medicine"> ${e.MedicineSecond}</td>
+                    <td class="dateManu"> ${e.MedicineSecondManufact}</td>
+                    <td class="dateExp"> ${e.MedicineSecondExpiry}</td>
+                    </tr>
+                  `
+                }
+                else if(e.MedicineForth == ""){
+                  list += `<tr class="tableRow">
+                    <td class="date">${e.DateOfIllness}</td>
+                    <td class="illness">${e.userPresentIllness}</td>
+                    <td class="medicine"> ${e.MedicineFirst}</td>
+                    <td class="dateManu"> ${e.MedicineFirstManufact}</td>
+                    <td class="dateExp"> ${e.MedicineFirstExpiry}</td>
+                    </tr>
+                    <tr class="tableRow">
+                    <td class="date">${e.DateOfIllness}</td>
+                    <td class="illness">${e.userPresentIllness}</td>
+                    <td class="medicine"> ${e.MedicineSecond}</td>
+                    <td class="dateManu"> ${e.MedicineSecondManufact}</td>
+                    <td class="dateExp"> ${e.MedicineSecondExpiry}</td>
+                    </tr>
+                    <tr class="tableRow">
+                    <td class="date">${e.DateOfIllness}</td>
+                    <td class="illness">${e.userPresentIllness}</td>
+                    <td class="medicine"> ${e.MedicineThird}</td>
+                    <td class="dateManu"> ${e.MedicineThirdManufact}</td>
+                    <td class="dateExp"> ${e.MedicineThirdExpiry}</td>
+                    </tr>
+                    `
+                }
+                else if(MedicineFifth == ""){
+                  list += `<tr class="tableRow">
+                    <td class="date">${e.DateOfIllness}</td>
+                    <td class="illness">${e.userPresentIllness}</td>
+                    <td class="medicine"> ${e.MedicineFirst}</td>
+                    <td class="dateManu"> ${e.MedicineFirstManufact}</td>
+                    <td class="dateExp"> ${e.MedicineFirstExpiry}</td>
+                    </tr>
+                    <tr class="tableRow">
+                    <td class="date">${e.DateOfIllness}</td>
+                    <td class="illness">${e.userPresentIllness}</td>
+                    <td class="medicine"> ${e.MedicineSecond}</td>
+                    <td class="dateManu"> ${e.MedicineSecondManufact}</td>
+                    <td class="dateExp"> ${e.MedicineSecondExpiry}</td>
+                    </tr>
+                    <tr class="tableRow">
+                    <td class="date">${e.DateOfIllness}</td>
+                    <td class="illness">${e.userPresentIllness}</td>
+                    <td class="medicine"> ${e.MedicineThird}</td>
+                    <td class="dateManu"> ${e.MedicineThirdManufact}</td>
+                    <td class="dateExp"> ${e.MedicineThirdExpiry}</td>
+                    </tr>
+                    <tr class="tableRow">
+                    <td class="date">${e.DateOfIllness}</td>
+                    <td class="illness">${e.userPresentIllness}</td>
+                    <td class="medicine"> ${e.MedicineForth}</td>
+                    <td class="dateManu"> ${e.MedicineForthManufact}</td>
+                    <td class="dateExp"> ${e.MedicineForthExpiry}</td>
+                    </tr>
+                    `
+                }
+                else{
+                list += `<tr class="tableRow">
+                    <td class="date">${e.DateOfIllness}</td>
+                    <td class="illness">${e.userPresentIllness}</td>
+                    <td class="medicine"> ${e.MedicineFirst}</td>
+                    <td class="dateManu"> ${e.MedicineFirstManufact}</td>
+                    <td class="dateExp"> ${e.MedicineFirstExpiry}</td>
+                    </tr>
+                    <tr class="tableRow">
+                    <td class="date">${e.DateOfIllness}</td>
+                    <td class="illness">${e.userPresentIllness}</td>
+                    <td class="medicine"> ${e.MedicineSecond}</td>
+                    <td class="dateManu"> ${e.MedicineSecondManufact}</td>
+                    <td class="dateExp"> ${e.MedicineSecondExpiry}</td>
+                    </tr>
+                    <tr class="tableRow">
+                    <td class="date">${e.DateOfIllness}</td>
+                    <td class="illness">${e.userPresentIllness}</td>
+                    <td class="medicine"> ${e.MedicineThird}</td>
+                    <td class="dateManu"> ${e.MedicineThirdManufact}</td>
+                    <td class="dateExp"> ${e.MedicineThirdExpiry}</td>
+                    </tr>
+                    <tr class="tableRow">
+                    <td class="date">${e.DateOfIllness}</td>
+                    <td class="illness">${e.userPresentIllness}</td>
+                    <td class="medicine"> ${e.MedicineForth}</td>
+                    <td class="dateManu"> ${e.MedicineForthManufact}</td>
+                    <td class="dateExp"> ${e.MedicineForthExpiry}</td>
+                    </tr>
+                    <tr class="tableRow">
+                    <td class="date">${e.DateOfIllness}</td>
+                    <td class="illness">${e.userPresentIllness}</td>
+                    <td class="medicine"> ${e.MedicineFifth}</td>
+                    <td class="dateManu"> ${e.MedicineFifthManufact}</td>
+                    <td class="dateExp"> ${e.MedicineFifthExpiry}</td>
+                    </tr>
+                    `
+                }
+            })
+            document.getElementById('datalist').innerHTML = list;
+            console.log(data);
+        }
+        getData()
+        </script>
+    {{!-- {{else}} --}}
+      {{!-- <p>No matching entries found.</p>
+    {{/if}} --}}
+
+
+
+    <script>
+  // Redirect the user to the home page
+  function redirectToHomePage() {
+    window.location.href = '/';
+  }
+
+  // Call the redirectToHomePage function when the user logs out
+  document.getElementById('logout-button').addEventListener('click', function() {
+    // Disable the back button
+    window.history.pushState(null, null, '/');
+    window.onpopstate = function() {
+      redirectToHomePage();
+    };
+
+    // Redirect to the home page
+    redirectToHomePage();
+  });
+
+
+</script>
+</body>
+</html>

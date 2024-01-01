@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/logo.png" />
+    <title>medical record system</title>
+    <link rel="stylesheet" href="/css/user.css">
+</head>
+<body style="background-color: #93b2a8;">
+    <header>
+        <a href="index.html">
+            <img class="logo" src="/images/logo2.png" height="90%" width="90%">
+        </a>
+        <a href="javascript:void(0);" id="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+        <ul id="mylinks" class="list-unstyled">
+            <li><a href="/user"><b>HISTORY</b></a></li> 
+            <li><a href="/physican"><b>PHYSICIAN</b></a></li>
+            <li><a href="/chem"><b>CHEMIST</b></a></li>
+            <li><a id="logout-button" href="/logout"><b>LOGOUT</b></a></li> 
+        </ul>
+    </header>
+    
+    <h2 class="medicalHistoy">Chemists Details</h2>
+    {{!-- {{#if response.lengh}} --}}
+      <table id="datalist">
+          
+
+      </table>
+    {{!-- {{else}} --}}
+      {{!-- <p>No matching entries found.</p>
+    {{/if}} --}}
+
+    <script>
+        const getData= async ()=>{
+            let resp = await fetch ("/api/chemist",{method:"GET"});
+            let data = await resp.json();
+          
+            let history = data.response;
+            console.log(history);
+            let list = `<tr class="tableRow">
+            <td class="firstname"><b>First Name</b></td>
+            <td class="lastname"><b>Last Name</b></td>
+            <td class="job"><b>Address Line 1</b></td>
+            <td class="org"><b>Address Line 2</b></td>
+            <td class="spec"><b>Area</b></td>
+            <td class="area"><b>District</b></td>
+            <td class="contactno"><b>Contact No</b></td>
+          </tr>`;
+            history.forEach((e)=>{
+                list += `<tr class="tableRow">
+                    <td class="firstname">${e.chemistFirstName}</td>
+                    <td class="lastname">${e.chemistLastName}</td>
+                    <td class="job">${e.chemistAddressLineOne}</td>
+                    <td class="org">${e.chemistAddressLineTwo}</td>
+                    <td class="spec">${e.chemistTaluka}</td>
+                    <td class="area">${e.chemistDistrict}</td>
+                    <td class="contactno">${e.chemistPersonalMobileNo}</td>
+                    </tr>
+                    `
+            })
+            document.getElementById('datalist').innerHTML = list;
+            console.log(data);
+        }
+        getData();
+    </script>
+
+
+
+<script>
+  // Redirect the user to the home page
+  function redirectToHomePage() {
+    window.location.href = '/';
+  }
+
+  // Call the redirectToHomePage function when the user logs out
+  document.getElementById('logout-button').addEventListener('click', function() {
+    // Disable the back button
+    window.history.pushState(null, null, '/');
+    window.onpopstate = function() {
+      redirectToHomePage();
+    };
+
+    // Redirect to the home page
+    redirectToHomePage();
+  });
+
+
+</script>
+</body>
+</html>

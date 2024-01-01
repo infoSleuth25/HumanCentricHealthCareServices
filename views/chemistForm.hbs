@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/logo.png" />
+    <title>medical record system</title>
+    <link rel="stylesheet" href="/css/chemistForm.css">
+</head>
+<body>
+    <div>
+        <div class="userDetails">
+            <h1 id="user">Chemist / Pharmacist Details</h1>
+            <form action="/chemistForm" method="post" onsubmit="return validateForm()">
+                <h2 id="PInfo">Personal Information</h2>
+                <div class="labels">
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">First Name</span></label>
+                            <br>
+                            <input name="firstname" class="inputs" type="text" required pattern="[A-Za-z]{2,30}" title="Please enter a valid name (2-30 characters, letters only)">
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Middle Name</span></label>
+                            <br>
+                            <input name="middlename" class="inputs" type="text" type="text" required pattern="[A-Za-z]{2,30}" title="Please enter a valid name (2-30 characters, letters only)">
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Last Name</span></label>
+                            <br>
+                            <input name="lastname" class="inputs" type="text" type="text" required pattern="[A-Za-z]{2,30}" title="Please enter a valid name (2-30 characters, letters only)">
+                        </div>
+                    </div>
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">Age</span></label>
+                            <br>
+                            <input name="age" class="inputs" type="number" required >
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Birth Date</span></label>
+                            <br>
+                            <input name="birthdate" class="inputs" type="date" required>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Select Gender</span></label>
+                            <br>
+                            <select class="inputs" name="gender" required>
+                                <option value=""> -- Select Gender -- </option>
+                                <option value="option1">Male</option>
+                                <option value="option2">Female</option>
+                                <option value="option3">Other</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <!-- <h2 id="PInfo">Residential Address Information</h2>
+                <div class="labels">
+                    <div class="row1">
+                        <div class="col2">
+                            <label for=""><span class="labelling">Address Line 1</span></label>
+                            <br>
+                            <input style="width: 90%;" class="inputs" type="text" required minlength="2" maxlength="100">
+                        </div>
+                        <div class="col2">
+                            <label for=""><span class="labelling">Address Line 2</span></label>
+                            <br>
+                            <input style="width: 90%;" class="inputs" type="text" required minlength="2" maxlength="100">
+                        </div>
+                    </div>
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">Taluka</span></label>
+                            <br>
+                            <input class="inputs" type="text" required>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">District</span></label>
+                            <br>
+                            <input class="inputs" type="text" required>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Select State</span></label>
+                            <br>
+                            <select class="inputs" id="state" name="state" required>
+                                <option value="">-- Select State --</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Manipur">Manipur</option>
+                                <option value="Meghalaya">Meghalaya</option>
+                                <option value="Mizoram">Mizoram</option>
+                                <option value="Nagaland">Nagaland</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Sikkim">Sikkim</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Tripura">Tripura</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Uttarakhand">Uttarakhand</option>
+                                <option value="West Bengal">West Bengal</option>
+                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                <option value="Chandigarh">Chandigarh</option>
+                                <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                                <option value="Daman and Diu">Daman and Diu</option>
+                                <option value="Lakshadweep">Lakshadweep</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Puducherry">Puducherry</option>
+                              </select>
+                        </div>
+                    </div>
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">Country</span></label>
+                            <br>
+                            <input class="inputs" type="text"  value="India" readonly>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Pin Code</span></label>
+                            <br>
+                            <input class="inputs" type="text" pattern="[1-9][0-9]{5}" title="Enter the valid pin code" maxlength="6" required>
+                        </div>
+                    </div>
+                </div> -->
+                <h2 id="PInfo">Identity Verification</h2>
+                <div class="labels">
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">Aadhar No</span></label>
+                            <br>
+                            <input name="aadharno" class="inputs" type="text" pattern="[0-9]{12}" title="Aadhar number should be a 12-digit number" maxlength="12" required>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Aadhar Card Certificate</span></label>
+                            <br>
+                            <input name="aadharnofile" class="inputs" type="file"  accept=".pdf, .jpg, .jpeg"  title="Invalid file format. Please attach a PDF, JPG, or JPEG file" required>
+                        </div>
+                    </div>
+                </div>
+                <h2 id="PInfo">Qualfication Details</h2> 
+                <div class="labels">
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">10th Marks / Grade</span></label>
+                            <br>
+                            <input name="tenth" class="inputs" type="number" required>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">10th Marksheet Certificate</span></label>
+                            <br>
+                            <input name="tenthfile" class="inputs" type="file"  accept=".pdf, .jpg, .jpeg"  title="Invalid file format. Please attach a PDF, JPG, or JPEG file" required>
+                        </div>
+                    </div>
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">12th Marks / Grade</span></label>
+                            <br>
+                            <input name="twelve" class="inputs" type="number" required>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">12th Marksheet Certificate</span></label>
+                            <br>
+                            <input name="twelvefile" class="inputs" type="file"  accept=".pdf, .jpg, .jpeg"  title="Invalid file format. Please attach a PDF, JPG, or JPEG file" required>
+                        </div>
+                    </div>
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">Degree Name</span></label>
+                            <br>
+                            <input name="degree" class="inputs" type="text" required>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Degree CGPA / Grade</span></label>
+                            <br>
+                            <input name="degreecgpa" class="inputs" type="number" required>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Degree Certificate</span></label>
+                            <br>
+                            <input name="degreefile" class="inputs" type="file"  accept=".pdf, .jpg, .jpeg"  title="Invalid file format. Please attach a PDF, JPG, or JPEG file" required>
+                        </div>
+                    </div>
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">Registration / License Number</span></label>
+                            <br>
+                            <input name="licenceno" class="inputs" type="number" required>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Registration / License Certificate</span></label>
+                            <br>
+                            <input name="licencefile" class="inputs" type="file"  accept=".pdf, .jpg, .jpeg"  title="Invalid file format. Please attach a PDF, JPG, or JPEG file" required>
+                        </div>
+                    </div>
+                </div>
+                <h2 id="PInfo">Pharmacy Information</h2> 
+                <div class="labels">
+                    <div class="row1">
+                        <div class="col2">
+                            <label for=""><span class="labelling">Pharmacy : Address Line 1</span></label>
+                            <br>
+                            <input name="addone" style="width: 90%;" class="inputs" type="text" required minlength="2" maxlength="100">
+                        </div>
+                        <div class="col2">
+                            <label for=""><span class="labelling">Pharmacy : Address Line 2</span></label>
+                            <br>
+                            <input name="addtwo" style="width: 90%;" class="inputs" type="text" required minlength="2" maxlength="100">
+                        </div>
+                    </div>
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">Taluka</span></label>
+                            <br>
+                            <input name="taluka" class="inputs" type="text" required>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">District</span></label>
+                            <br>
+                            <input name="district" class="inputs" type="text" required>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Select State</span></label>
+                            <br>
+                            <select class="inputs" id="state" name="state" required>
+                                <option value="">-- Select State --</option>
+                                <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                <option value="Assam">Assam</option>
+                                <option value="Bihar">Bihar</option>
+                                <option value="Chhattisgarh">Chhattisgarh</option>
+                                <option value="Goa">Goa</option>
+                                <option value="Gujarat">Gujarat</option>
+                                <option value="Haryana">Haryana</option>
+                                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                <option value="Jharkhand">Jharkhand</option>
+                                <option value="Karnataka">Karnataka</option>
+                                <option value="Kerala">Kerala</option>
+                                <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                <option value="Maharashtra">Maharashtra</option>
+                                <option value="Manipur">Manipur</option>
+                                <option value="Meghalaya">Meghalaya</option>
+                                <option value="Mizoram">Mizoram</option>
+                                <option value="Nagaland">Nagaland</option>
+                                <option value="Odisha">Odisha</option>
+                                <option value="Punjab">Punjab</option>
+                                <option value="Rajasthan">Rajasthan</option>
+                                <option value="Sikkim">Sikkim</option>
+                                <option value="Tamil Nadu">Tamil Nadu</option>
+                                <option value="Telangana">Telangana</option>
+                                <option value="Tripura">Tripura</option>
+                                <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                <option value="Uttarakhand">Uttarakhand</option>
+                                <option value="West Bengal">West Bengal</option>
+                                <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                <option value="Chandigarh">Chandigarh</option>
+                                <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                                <option value="Daman and Diu">Daman and Diu</option>
+                                <option value="Lakshadweep">Lakshadweep</option>
+                                <option value="Delhi">Delhi</option>
+                                <option value="Puducherry">Puducherry</option>
+                              </select>
+                        </div>
+                    </div>
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">Country</span></label>
+                            <br>
+                            <input name="country" class="inputs" type="text"  value="India" readonly>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Pin Code</span></label>
+                            <br>
+                            <input name="pincode" class="inputs" type="text" pattern="[1-9][0-9]{5}" title="Enter the valid pin code" maxlength="6" required>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Contact Number ( Organization )</span></label>
+                            <br>
+                            <input name="contact" class="inputs" type="number" required>
+                        </div>
+                    </div>
+                </div>
+                <h2 id="PInfo">Mobile Number Authentication</h2>
+                <div class="labels">
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">Mobile No</span></label>
+                            <br>
+                            <input name="mobile" class="inputs" type="text">
+                            <button>Get OTP</button>
+                        </div>
+                    </div>
+                </div>
+                <h2 id="PInfo">Setting Username && Password</h2>
+                <div class="labels">
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">Username</span></label>
+                            <br>
+                            <input name="username" class="inputs"  type="text" id="username" name="username" required minlength="5" maxlength="20" pattern="[a-zA-Z0-9]+" title="Username must be alphanumeric and between 5 to 20 characters long.">
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Password</span></label>
+                            <br>
+                            <input name="password" class="inputs" type="password" id="password" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$" title="Password must contain at least 8 characters including one uppercase letter, one lowercase letter, one digit, and one special character (!@#$%^&*)" required>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Confirm Password</span></label>
+                            <br>
+                            <input name="confirmpassword" class="inputs" type="password" id="confirm-password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,}$" title="Password must contain at least 8 characters including one uppercase letter, one lowercase letter, one digit, and one special character (!@#$%^&*)" required>
+                            <div id="confirm-password-error" class="error-message"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="labels sub">
+                    <button type="submit" class="submission">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>

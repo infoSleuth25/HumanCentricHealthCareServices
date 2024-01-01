@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/logo.png" />
+    <title>medical record system</title>
+    <link rel="stylesheet" href="/css/user.css">
+</head>
+<body style="background-color: #93b2a8;">
+    <header>
+        <a href="index.html">
+            <img class="logo" src="/images/logo2.png" height="90%" width="90%">
+        </a>
+        <a href="javascript:void(0);" id="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+        <ul id="mylinks" class="list-unstyled">
+            <li><a href="/chemist"><b>NEW RECORD</b></a></li> 
+            <li><a id="logout-button" href="/logout"><b>LOGOUT</b></a></li> 
+        </ul>
+    </header>
+    <div>
+        <div class="userDetails">
+            <h1 id="user">User's Medical Details</h1>
+            <form action="/chemist" method="post">
+                <h2 id="PInfo">User's Details</h2>
+                <div class="labels">
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">Aadhar No</span></label>
+                            <br>
+                            <input name="aadharno" class="inputs" type="text" pattern="[0-9]{12}" title="Aadhar number should be a 12-digit number" maxlength="12" required>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Present Illness</span></label>
+                            <br>
+                            <input name="presentillness" class="inputs" type="text" style="width:70%" required>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Today's Date</span></label>
+                            <br>
+                            <input name="date" class="inputs" type="date" required>
+                        </div>
+                    </div>
+                </div>
+                <h2 id="PInfo">Prescription of medications</h2>
+                <div class="labels">
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">Medicine Name (1)</span></label>
+                            <br>
+                            <input name="med1" class="inputs" type="text" required pattern="[A-Za-z]{2,30}" title="Please enter a valid name (2-30 characters, letters only)">
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Manufactured Date</span></label>
+                            <br>
+                            <input name="med1man" class="inputs" type="date" required>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Expiry Date</span></label>
+                            <br>
+                            <input name="med1exp" class="inputs" type="date" required>
+                        </div>
+                    </div>
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">Medicine Name (2 - Optional)</span></label>
+                            <br>
+                            <input name="med2" class="inputs" type="text" pattern="[A-Za-z]{2,30}" title="Please enter a valid name (2-30 characters, letters only)">
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Manufactured Date</span></label>
+                            <br>
+                            <input name="med2man" class="inputs" type="date">
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Expiry Date</span></label>
+                            <br>
+                            <input name="med2exp" class="inputs" type="date">
+                        </div>
+                    </div>
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">Medicine Name (3 - Optional)</span></label>
+                            <br>
+                            <input name="med3" class="inputs" type="text" pattern="[A-Za-z]{2,30}" title="Please enter a valid name (2-30 characters, letters only)">
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Manufactured Date</span></label>
+                            <br>
+                            <input name="med3man" class="inputs" type="date">
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Expiry Date</span></label>
+                            <br>
+                            <input name="med3exp" class="inputs" type="date">
+                        </div>
+                    </div>
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">Medicine Name (4 - Optional)</span></label>
+                            <br>
+                            <input name="med4" class="inputs" type="text" pattern="[A-Za-z]{2,30}" title="Please enter a valid name (2-30 characters, letters only)">
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Manufactured Date</span></label>
+                            <br>
+                            <input name="med4man" class="inputs" type="date">
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Expiry Date</span></label>
+                            <br>
+                            <input name="med4exp" class="inputs" type="date">
+                        </div>
+                    </div>
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">Medicine Name (5 - Optional)</span></label>
+                            <br>
+                            <input name="med5" class="inputs" type="text" pattern="[A-Za-z]{2,30}" title="Please enter a valid name (2-30 characters, letters only)">
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Manufactured Date</span></label>
+                            <br>
+                            <input name="med5man" class="inputs" type="date">
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Expiry Date</span></label>
+                            <br>
+                            <input name="med5exp" class="inputs" type="date">
+                        </div>
+                    </div>
+                </div>
+                <div class="labels sub">
+                    <button type="submit" class="submission">Add Record</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+  // Redirect the user to the home page
+  function redirectToHomePage() {
+    window.location.href = '/';
+  }
+
+  // Call the redirectToHomePage function when the user logs out
+  document.getElementById('logout-button').addEventListener('click', function() {
+    // Disable the back button
+    window.history.pushState(null, null, '/');
+    window.onpopstate = function() {
+      redirectToHomePage();
+    };
+
+    // Redirect to the home page
+    redirectToHomePage();
+  });
+</script>
+</body>
+</html>

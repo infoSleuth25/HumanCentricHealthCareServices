@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/logo.png" />
+    <title>medical record system</title>
+    <link rel="stylesheet" href="/css/vitals.css">
+</head>
+<body style="background-color: #93b2a8;">
+    <header>
+        <a href="index.html">
+            <img class="logo" src="/images/logo2.png" height="90%" width="90%">
+        </a>
+        <a href="javascript:void(0);" id="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+        <ul id="mylinks" class="list-unstyled">
+            <li><a href="/doctor"><b>HISTORY</b></a></li> 
+            <li><a href="/vitals"><b>VITALSIGNS</b></a></li>
+            <li><a id="logout-button" href="/logout"><b>LOGOUT</b></a></li> 
+        </ul>
+
+
+    </header>
+    
+    <div>
+        <div class="userDetails">
+            <h1 id="user">Vital Signs Information</h1>
+            <form action="/vitals" method="post">
+                <h2 id="PInfo">Vital Signs</h2>
+                <div class="labels">
+                    <div class="row1">
+                        <div class="col1">
+                            <label for=""><span class="labelling">Aadhar No(*)</span></label>
+                            <br>
+                            <input name="aadhar" class="inputs" type="text" pattern="[0-9]{12}" title="Aadhar number should be a 12-digit number" maxlength="12" required>
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Blood Pressure (Yes or No)</span></label>
+                            <br>
+                            <input name="bp" class="inputs" type="text" type="text">
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Blood Pressure (Count)</span></label>
+                            <br>
+                            <input name="bpcount" class="inputs" type="text" type="text">
+                        </div>
+                    </div>
+                    <div class="row1">
+                         <div class="col1">
+                            <label for=""><span class="labelling">Respiratory Rate</span></label>
+                            <br>
+                            <input name="resp" class="inputs" type="text" type="text">
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Heart Rate</span></label>
+                            <br>
+                            <input name="heartrate" class="inputs" type="text" type="text">
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Pulse Rate</span></label>
+                            <br>
+                            <input name="pulse" class="inputs" type="text" type="text">
+                        </div>
+                    </div>
+                    <div class="row1">
+                         <div class="col1">
+                            <label for=""><span class="labelling">Height</span></label>
+                            <br>
+                            <input name="height" class="inputs" type="text" type="text">
+                        </div>
+                        <div class="col1">
+                            <label for=""><span class="labelling">Weight</span></label>
+                            <br>
+                            <input name="weight" class="inputs" type="text" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="labels sub">
+                    <button type="submit" class="submission">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+<script>
+  // Redirect the user to the home page
+  function redirectToHomePage() {
+    window.location.href = '/';
+  }
+
+  // Call the redirectToHomePage function when the user logs out
+  document.getElementById('logout-button').addEventListener('click', function() {
+    // Disable the back button
+    window.history.pushState(null, null, '/');
+    window.onpopstate = function() {
+      redirectToHomePage();
+    };
+
+    // Redirect to the home page
+    redirectToHomePage();
+  });
+
+
+</script>
+</body>
+</html>

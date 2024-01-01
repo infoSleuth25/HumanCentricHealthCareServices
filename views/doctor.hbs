@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/logo.png" />
+    <title>medical record system</title>
+    <link rel="stylesheet" href="/css/doctor.css">
+</head>
+<body style="background-color: #93b2a8;">
+    <header>
+        <a href="index.html">
+            <img class="logo" src="/images/logo2.png" height="90%" width="90%">
+        </a>
+        <a href="javascript:void(0);" id="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+        <ul id="mylinks" class="list-unstyled">
+            <li><a href="/doctor"><b>HISTORY</b></a></li> 
+            <li><a href="/vitals"><b>VITALSIGNS</b></a></li>
+            <li><a id="logout-button" href="/logout"><b>LOGOUT</b></a></li> 
+        </ul>
+
+
+    </header>
+    
+    <h2 class="medicalHistoy">MEDICAL HISTORY OF USERS</h2>
+    <div id="datalist">
+
+    </div>
+    {{!-- {{#if response.length}} --}}
+      {{!-- <table id="datalist">
+          
+
+      </table> --}}
+    {{!-- {{else}} --}}
+      {{!-- <p>No matching entries found.</p>
+    {{/if}} --}}
+
+    <script>
+        const getData= async ()=>{
+            let resp = await fetch ("/api/patient",{method:"GET"});
+            let data = await resp.json();
+          
+            let history = data.response;
+            console.log(history);
+            let list = ``;
+            history.forEach((e)=>{
+                list += `
+                    <div class="datas">
+                        <h2 class="namess">Patient's Name : ${e.userFirstName + " " + e.userMiddleName + " " + e.userLastName}</h2>
+                        <p> Patient's Aadhar No : ${e.userAadharNo}</p>
+                        <p>Patient's Age : ${e.userAge}</p>
+                        <p>Patient's Gender : Male</p>
+                        <p>Patient's Address : ${e.userTaluka + ", " + e.userDistrict }</p>
+                        <p>Patient's Contact No : ${e.userMobileNo} "</p>
+                        <div class="btnss">
+                            <a href="/vitalbtn" class="but"><b>VIEW VITALS</b></a>
+                            <a href="/vitalbtn" class="but"><b>VIEW HISTORY</b></a>
+                        </div>        
+                    </div>
+                    `
+            })
+            document.getElementById('datalist').innerHTML = list;
+            console.log(data);
+        }
+        getData();
+    </script>
+
+
+
+<script>
+  // Redirect the user to the home page
+  function redirectToHomePage() {
+    window.location.href = '/';
+  }
+
+  // Call the redirectToHomePage function when the user logs out
+  document.getElementById('logout-button').addEventListener('click', function() {
+    // Disable the back button
+    window.history.pushState(null, null, '/');
+    window.onpopstate = function() {
+      redirectToHomePage();
+    };
+
+    // Redirect to the home page
+    redirectToHomePage();
+  });
+
+
+</script>
+</body>
+</html>
